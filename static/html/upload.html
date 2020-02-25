@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<body>
+        <p>
+            上传文件:
+            <input type="file" name="logo" id="file">
+        </p>
+        <input type="button" value="上传" onclick="uploads()">
+</body>
+<script>
+    function uploads () {
+        let file = $('#file').get(0).files[0]
+        let formData = new FormData()
+        formData.append('logo',file)
+        $.ajax({
+            url:'http://localhost:9092/file/upload',
+            method:'post',
+            cache:false,
+            data:formData,
+            contentType:false,
+            processData:false,
+            success:(data)=> {
+                console.log(data)
+            }
+        })
+    }
+</script>
+</html>

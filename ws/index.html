@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const ws = new WebSocket("ws://localhost:9093/")
+        ws.onopen = function () {
+            console.log('服务器已连接')
+            ws.send("lubenweiniubi")
+        }
+        ws.onmessage = function (msg) {
+            console.log(msg)
+        }
+        ws.onclose = function () {
+            console.log("服务器已经断开连接")
+        }
+    </script>
+</body>
+</html>
